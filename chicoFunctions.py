@@ -5,7 +5,7 @@ Created on Tue Aug 12 14:30:10 2014
 @author: rouxinol
 """
 
-import pylab
+#import pylab
 from numpy import *
 from collections import Counter
 from scipy import interpolate
@@ -130,9 +130,10 @@ def SuperImportXYZZ(file_name,col_i=0, col_x=1, col_y=2, col_Amp=3, col_Phase=4)
 #__________________________________________________
 
 def LineUp(File_Name, X, Y, Center=2, Divide=2, Ref_Curve=0):
-    """  Line up data from File_Name (2D matrix) in relation to the Ref_Curve 
-      Center: number dividing the length of X Axis "
-      Divide: number dividing the length for max line up"
+    """  
+    Line up data from File_Name (2D matrix) in relation to the Ref_Curve 
+    Center: number dividing the length of X Axis "
+    Divide: number dividing the length for max line up"
     """
     File = copy.deepcopy(File_Name)
     #Ref_Curve = 1
@@ -225,8 +226,11 @@ def ImportS2P(file_name, Cols=(0, 3, 4), Skip_head = 10, Delimiter = " "):
 #__________________________________________________
 # PColor fix range
 def PColor(Data):
-    """ Function to correct the range of X and Y axis in a pcolor map
-    MATLAB pcolor() always discards the last row and column of C, but matplotlib displays the last row and column if X and Y are not specified, or if X and Y have one more row and column than C."
+    """ 
+    Function to correct the range of X and Y axis in a pcolor map
+    MATLAB pcolor() always discards the last row and column of C, 
+    but matplotlib displays the last row and column if X and Y are not specified, 
+    or if X and Y have one more row and column than C."
     """
     size_X = Data.size
     step_X = (Data[0]-Data[1])
@@ -240,18 +244,21 @@ def PColor(Data):
 # Wrap phase________________________________________
 def unwrap_d(Phase):
     """
-    Unwrap Phase in Dregree"""
+    Unwrap Phase in Dregree
+    """
     return unwrap(Phase * pi / 180)
 
 
 def wrap(Phase):
-    """ Wrap back the phase 
+    """ 
+    Wrap back the phase 
     """
     return (Phase + pi) % (2 * pi) - pi
 
 
 def wrap1(Phase):
-    """ Wrap back the phase using arctan2
+    """ 
+    Wrap back the phase using arctan2
     """
     return arctan2(sin(Phase), cos(Phase))
 
